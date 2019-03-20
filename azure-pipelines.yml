@@ -10,7 +10,7 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-  imageName: 'demo/bootcamp-demo:$(build.buildId)'
+  imageName: 'GauriDevCamp/bootcamp-demo:$(build.buildId)'
 
 steps:
 - task: Docker@1
@@ -19,5 +19,6 @@ steps:
     command: login
     azureSubscriptionEndpoint: Demo123
     azureContainerRegistry: gauridevcamp.azurecr.io
+
 - script: docker build -t gauridevcamp.azure.io/$(imageName) ./app
 - script: docker push gauridevcamp.azure.io/$(imageName)
